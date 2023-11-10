@@ -92,20 +92,22 @@
 
 #### Collection
 
-![](image/image_Znhnwu_zog.png)
+<p align="center">
+  <img width="500" src="image/image_Znhnwu_zog.png"> 
+</p>
 
 -   The Cancer Genome Atlas Kidney Renal Clear Cell Carcinoma(TCGA-KIRC), National Cancer Institute GDC Data Portal.
 -   Including clinical images, genomic, pathological, and clinical data of patients with clear cell renal carcinoma.
 -   200 slice images in SVS formatin the website order.
 
-In the selection of our firstdataset, we choose the TCGA-KIRC dataset from the National Cancer Institute GDCData Portal. This research project gathers clinical images, genomic,pathological, and clinical data of patients with clear cell renal carcinoma. Wechoose the original tissue pathology slide images from this dataset andconducted super-resolution training and testing on these image data.
+In the selection of our firstdataset, we choose the TCGA-KIRC dataset from the National Cancer Institute GDCData Portal. This research project gathers clinical images, genomic,pathological, and clinical data of patients with clear cell renal carcinoma. Wechoose the original tissue pathology slide images from this dataset andconducted super-resolution training and testing on these image data. 
 
-**Dataset 1——7108 images(HR\&LR)**
+**Dataset 1——7108 images(HR\&LR)** 
 
 -   Segmented from 200 SVSimages.&#x20;
--   Train Set: 5686, Validation Set: 710, Test Set: 712.
+-   Train Set: 5686, Validation Set: 710, Test Set: 712. 
 
-For this dataset 1, we establishtwo kinds of dataset. We have made a small-scale dataset for the initialtraining and debugging phases of the model, facilitating more efficientevaluation of model performance and parameter optimization. Additionally, itserves as a solution to address the issue of insufficient computer performance.
+For this dataset 1, we establishtwo kinds of dataset. We have made a small-scale dataset for the initialtraining and debugging phases of the model, facilitating more efficientevaluation of model performance and parameter optimization. Additionally, itserves as a solution to address the issue of insufficient computer performance. 
 
 **Dataset Mini——4020 images(HR\&LR)**
 
@@ -115,19 +117,25 @@ For this dataset 1, we establishtwo kinds of dataset. We have made a small-scale
 
 For the large-scale dataset, thatis what we called Dataset 1, we have 7108 images from 200 SVS images, dividingthem into training set, validation set and test set in a 8:1:1(eight one one) ratio. Boththe HR and LR datasets share these same numbers. And for the small dataset,that is what we called Dataset Mini, we have 4020 images from a single SVSimage, and the ratio of each part is in the same.
 
-![](image/image_gTWpWFbzzM.png)
+<p align="center"> 
+  <img width="500" src="image/image_gTWpWFbzzM.png"> 
+</p>
 
 ### Dataset 1 Processing
 
 #### Processing
 
-![](image/image_cI4D5_uASZ.png)
+<p align="center"> 
+  <img width="200" src="image/image_cI4D5_uASZ.png">   
+</p>
 
 #### Step 1: Image Segmentation
 
 Split large SVS files into 256×256 small PNG files.
 
-![](image/image_k2Q3_CX8IK.png)
+<p align="center"> 
+  <img width="400" src="image/image_k2Q3_CX8IK.png">   
+</p> 
 
 We segmented each SVS image into multiple image blocks with a size of 256x256 pixels, converting them into PNG files, and save them in the HR (high resolution) folder.&#x20;
 
@@ -135,15 +143,19 @@ We segmented each SVS image into multiple image blocks with a size of 256x256 pi
 
 Filter images by grayscale standard deviation (≥30).
 
-![](image/image_3ODLt-LEsn.png)
+<p align="center"> 
+  <img width="400" src="image/image_3ODLt-LEsn.png">   
+</p>
 
-We assess image quality based on the standard deviation of grayscale values, retaining regions with substantial grayscale variations. We calculate the SD for each pixel, comparing it against a threshold (set at 30). From each original medical pathology image, we select the first 100 images exceeding this threshold, saving them as the HR (high resolution) dataset.
+We assess image quality based on the standard deviation of grayscale values, retaining regions with substantial grayscale variations. We calculate the SD for each pixel, comparing it against a threshold (set at 30). From each original medical pathology image, we select the first 100 images exceeding this threshold, saving them as the HR (high resolution) dataset. 
 
 #### Step 3: Image Downsampling&#xD;
 
 Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
-![](image/image_LLrMvcPtmw.png)
+<p align="center"> 
+  <img width="400" src="image/image_LLrMvcPtmw.png">   
+</p>
 
 We downsampled HR images, reducing their resolution to 64×64, and saved the processed images as the LR (low resolution) dataset.
 
@@ -151,7 +163,9 @@ We downsampled HR images, reducing their resolution to 64×64, and saved the pro
 
 Remove images with over 40% of pixels close to all black or all white
 
-![](image/image_jhfXNEX3_O.png)
+<p align="center"> 
+  <img width="400" src="image/image_jhfXNEX3_O.png">   
+</p>
 
 We performed a second round of selection on images in the HR and LR datasets, removing those with over 40% of pixels close to all black or all white.&#x20;
 
@@ -161,7 +175,7 @@ Train: 5686, Test: 712 , Val: 710
 
 We divided the dataset into three sets in a ratio of 8:1:1 as I mentioned before. For the Dataset 1, we have 5686, 710, 712 in turn. These numbers applies to both the HR and LR datasets.
 
-And for **the Dataset Mini**, the five steps are in the same.&#x20;
+And for **the Dataset Mini**, the five steps are in the same.&#x20; 
 
 ### Dataset 2: BreakHis&#x20;
 
@@ -169,7 +183,9 @@ And for **the Dataset Mini**, the five steps are in the same.&#x20;
 
 The Breast Cancer Histopathological Image Classification is derived from Breast Cancer Histopathological Database (BreakHis).&#x20;
 
-![](image/image_mTjo4y_SX_.png)
+<p align="center"> 
+  <img width="500" src="image/image_mTjo4y_SX_.png">  
+</p>
 
 #### Detailed introduction
 
@@ -177,13 +193,17 @@ The dataset is composed of 9,109 microscopic images of breast tumor tissue colle
 
 To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3-channel RGB, 8-bit depth in each channel, PNG format).
 
-![](image/image_XsMQfS2S0t.png)
+<p align="center"> 
+  <img width="500" src="image/image_XsMQfS2S0t.png">  
+</p>
 
-The dataset is divided into four categories according to magnifications 40x, 100x, 200x, and 400x. Each magnification level contains four types of benign breast tumors and four types of malignant breast tumors based on histopathology.&#x20;
+The dataset is divided into four categories according to magnifications 40x, 100x, 200x, and 400x. Each magnification level contains four types of benign breast tumors and four types of malignant breast tumors based on histopathology.&#x20; 
 
-![](image/image_Rwj2-16jr3.png)
+<p align="center"> 
+  <img width="400" src="image/image_Rwj2-16jr3.png">   
+</p>
 
-Within such classification, further divisions are made according to medical records. We conduct six processing steps on this dataset, and the core innovative points are reflected in the use of template matching and copy-paste algorithm. Therefore, I will first introduce the detailed processing procedures of these two steps.
+Within such classification, further divisions are made according to medical records. We conduct six processing steps on this dataset, and the core innovative points are reflected in the use of template matching and copy-paste algorithm. Therefore, I will first introduce the detailed processing procedures of these two steps. 
 
 #### Template matching
 
@@ -193,25 +213,31 @@ Innovation point one in data processing: Instead of 'downsampling' which is comm
 
 **Step 1: Converting to grayscale**
 
-Convert the image into grayscale to facilitate subsequent calculations.
+Convert the image into grayscale to facilitate subsequent calculations. 
 
-![](image/image_PrHdxStIQx.png)
+<p align="center"> 
+  <img width="300" src="image/PrHdxStIQx.png">    
+</p>
 
-All color images in the two datasets are converted to grayscale, where the grayscale value of each pixel is between 0-255.
+All color images in the two datasets are converted to grayscale, where the grayscale value of each pixel is between 0-255. 
 
 **Step 2: creating filters**
 
-Making a copy of a 400Ximage, reducing the copied part to 175X115 pixels in size, to be used as a filter.
+Making a copy of a 400Ximage, reducing the copied part to 175X115 pixels in size, to be used as a filter. 
 
-![](image/image_5JvD55Rc4g.png)
+<p align="center">  
+  <img width="400" src="image/image_5JvD55Rc4g.png">   
+</p>
 
 Then a copy of a 400x image is made, and the copied part is reduced to 175x115 pixels in size as a filter.&#x20;
 
 **Step 3: measuring regional similarity**
 
 Sliding this filter over a 100X image, measuring the matching degree of each region by calculating the differences in grayscale values, setting the matching degree threshold to0.95.
-
-![](image/新GIF动图_iX49G2vMei.gif)
+ 
+<p align="center"> 
+  <img width="500" src="image/新GIF动图_iX49G2vMei.gif">  
+</p>
 
 This filter slid over the 100x image to measure the matching degree of each region against the filter by calculating the differences in grayscale values, with the matching degree threshold set to 0.95.&#x20;
 
@@ -219,31 +245,39 @@ This filter slid over the 100x image to measure the matching degree of each regi
 
 finding positions where the matching degree is greater than or equal to this value. Calculate, cut to the matching position.
 
-![](image/image_r-8tbSkC7Y.png)
+<p align="center"> 
+  <img width="800" src="image/image_r-8tbSkC7Y.png">   
+</p>
 
-The positions with a matching degree greater than or equal to this value are then found and extracted. Repeating this process enables batch template matching, and we found the 100x images corresponding to the 400x template.
+The positions with a matching degree greater than or equal to this value are then found and extracted. Repeating this process enables batch template matching, and we found the 100x images corresponding to the 400x template. 
 
 #### Copy-paste algorithm
 
 We employ the copy-paste algorithm to augment our dataset, as it allows for precisely extracting and repositioning regions of interest within and across images.
 
-Innovation point two in data processing: The dataset is augmented using the copy-paste algorithm. Specifically, three source regions are randomly selected for copying, and three random target locations are selected for pasting to generate a new image. The above shows the effect comparison before and after using the copy-paste algorithm.
+Innovation point two in data processing: The dataset is augmented using the copy-paste algorithm. Specifically, three source regions are randomly selected for copying, and three random target locations are selected for pasting to generate a new image. The above shows the effect comparison before and after using the copy-paste algorithm. 
 
-![](image/image_95ofPb1nSB.png)
+<p align="center"> 
+  <img width="500" src="image/image_95ofPb1nSB.png">  
+</p>
 
 Insummary, the processing procedures for this dataset include six steps:&#x20;
 
 1\) Image classification. 2) Template matching. 3) Image segmentation. 4) Copy-paste algorithm. 5) Variance thresholding to remove abnormal images. 6) Dividing into train, test and validation sets with a ratio of 8:1:1. The dataset size and pixel changes at each step are also presented next to the steps.
 
-![](image/image_EmkGEQOWMp.png)
+<p align="center"> 
+  <img width="400" src="image/image_EmkGEQOWMp.png">   
+</p>
 
 ## SRTN Model
 
 ### ScResTransNet
 
-![](image/image_CyBrAVklrC.png)
+<p align="center">  
+  <img width="800" src="image/image_CyBrAVklrC.png">   
+</p>
 
-OurSRTN model, building upon the foundation of EDSR, introduces enhancedefficiency in structure. In the Residual Body, numerous residual connectionsare employed, featuring a novel substitution of ScConvlayers for traditional convolutional layers. This innovation not only retainsthe core of convolutional benefits but alsoinfuses additional adaptability into the model.
+OurSRTN model, building upon the foundation of EDSR, introduces enhancedefficiency in structure. In the Residual Body, numerous residual connectionsare employed, featuring a novel substitution of ScConvlayers for traditional convolutional layers. This innovation not only retainsthe core of convolutional benefits but alsoinfuses additional adaptability into the model. 
 
 The Efficient Transformer module is a cornerstone of our design, utilizing an Efficient Multi-Head Attention mechanism, known as EMA, alongside a Multilayer Perceptron (MLP) network. For the up sampling process, we have integrated sub-pixel convolution layers, ensuring a meticulous upscaling of image resolution while preserving intricate details. This architecture culminates in a refined balance of performance and efficiency.
 
@@ -253,25 +287,37 @@ The Residual Body, based on the design from Residual Network, makes the training
 
 We spotlight the Residual Body of our model, which is inspired by the Residual Network design and consists of 16residual blocks. Each block incorporates the innovative ScConv layers that replace traditional convolution layers. The adoption of ScConv, standing for Spatial and Channel-wise Reconstruction Convolution, significantly reduces feature redundancy.
 
-![](image/image_kkD1PFjJND.png)
+<p align="center"> 
+  <img width="800" src="image/image_kkD1PFjJND.png">   
+</p>
 
-The SCConv module, reducing redundant features in convolution layers, enhances model performance and efficiency while lowering computational costs and complexity.
+The SCConv module, reducing redundant features in convolution layers, enhances model performance and efficiency while lowering computational costs and complexity. 
 
-![](image/image_fVfyaBMA2M.png)
+<p align="center"> 
+  <img width="250" src="image/image_fVfyaBMA2M.png">    
+</p>
 
-This design is important in enhancing the model's performance by streamlining features more effectively, thus leading to a substantial reduction in computational costs and complexity. Our approach presents a leap forward in model efficiency, balancing high performance with lower computational demands.
+This design is important in enhancing the model's performance by streamlining features more effectively, thus leading to a substantial reduction in computational costs and complexity. Our approach presents a leap forward in model efficiency, balancing high performance with lower computational demands. 
 
-![](image/image_HHxQ--v5KQ.png)
+<p align="center"> 
+  <img width="500" src="image/image_HHxQ--v5KQ.png">  
+</p>
 
-Our Efficient Transformer (ET) is at the heart of our model's architecture for medical image super-resolution enhancement. It begins with an embedding convolution to transform the input tensor for subsequent layers. Layer normalization is applied to stabilize the activations before attention, followed by the Efficient Multi-head Attention(EMA) module that computes attention with reduced complexity, enhancing processing efficiency. Post-attention normalization ensures stable output from the attention mechanism. A feedforward neural network applies non-linear transformations, and a feature mapping convolution generates the final output tensor.
+Our Efficient Transformer (ET) is at the heart of our model's architecture for medical image super-resolution enhancement. It begins with an embedding convolution to transform the input tensor for subsequent layers. Layer normalization is applied to stabilize the activations before attention, followed by the Efficient Multi-head Attention(EMA) module that computes attention with reduced complexity, enhancing processing efficiency. Post-attention normalization ensures stable output from the attention mechanism. A feedforward neural network applies non-linear transformations, and a feature mapping convolution generates the final output tensor. 
 
-![](image/image_zbGmcLGzZW.png)
+<p align="center"> 
+  <img width="500" src="image/image_zbGmcLGzZW.png">   
+</p>
 
-![](image/image_1w7ryA1rtp.png)
+<p align="center"> 
+  <img width="500" src="image/image_1w7ryA1rtp.png">  
+</p>
 
-We use the sub-pixel convolution layer to upscale the image resolution. This layer rearranges low-resolution inputs into high-resolution outputs, increasing pixel density and ensuring the clarity of enhanced medical images.
+We use the sub-pixel convolution layer to upscale the image resolution. This layer rearranges low-resolution inputs into high-resolution outputs, increasing pixel density and ensuring the clarity of enhanced medical images. 
 
-![](image/image_KuTMtkXAxt.png)
+<p align="center"> 
+  <img width="350" src="image/image_KuTMtkXAxt.png">   
+</p>
 
 It rearranges the low-resolution input into high-resolution output to increase the pixel density of the image.
 
@@ -279,45 +325,61 @@ Implementation of the Model
 
 #### Mainframe of the SRTN Model
 
-![](image/image_zO-5dkkwX3.png)
+<p align="center"> 
+  <img width="500" src="image/image_zO-5dkkwX3.png">   
+</p>
 
-This code defines a model named SRTN ,as shown in the image. It consists of head, residual convolution, body, transformer, 'upsamle' and tail. The left image shows the changes in the tensor after passing through different modules, allowing us to observe the evolution and transformation of features.
+This code defines a model named SRTN ,as shown in the image. It consists of head, residual convolution, body, transformer, 'upsamle' and tail. The left image shows the changes in the tensor after passing through different modules, allowing us to observe the evolution and transformation of features. 
 
-![](image/image_7QZIihGon2.png)
+<p align="center"> 
+  <img width="350" src="image/image_7QZIihGon2.png">     
+</p>
 
 #### **The two main modules**
 
 Efficient Transformer and Simple ResidualBlock . Efficient Transformer module is used for feature transformation and extraction, offering efficient performance. It comprises three main parts: input embeddings convolution, transformer block, and output embeddings convolution. This module effectively handles features to enhance the model's performance and representation capabilities.
 
-![](image/image_CNjjWPhfOK.png)
+<p align="center"> 
+  <img width="500" src="image/image_CNjjWPhfOK.png">   
+</p>
 
 Simple ResBlock module is used to implement residual connections in the model. It consists of two convolutional layers and a ReLU activation function. In our implementation, we have replaced the convolutional layers in ResBlock with the previously mentioned SCconv. By using it, we reduce the extraction of redundant features in the convolutional layers, thereby reducing computational and storage costs.&#x20;
 
-![](image/image_icHi9Gsc_o.png)
+<p align="center"> 
+  <img width="400" src="image/image_icHi9Gsc_o.png">   
+</p>
 
 #### Training and Validation
 
 We defined the mean square error (MSE) loss function. We also used the Adamoptimizer with a learning rate of 0.001
 
-![](image/image_ZN9MBYCOPk.png)
+<p align="center"> 
+  <img width="500" src="image/image_ZN9MBYCOPk.png">  
+</p>
 
-We evaluate the model on test data. We make predictions, calculate test loss, and store results. By comparing predicted outputs with ground truth, we assess model performance.
+We evaluate the model on test data. We make predictions, calculate test loss, and store results. By comparing predicted outputs with ground truth, we assess model performance.  
 
-![](image/image_xuFirXrxxE.png)
+<p align="center"> 
+  <img width="300" src="image/image_xuFirXrxxE.png">   
+</p>
 
 Model Comparison
 
 **Training error curves of different models:**
 
-![](image/image_K_JVD9YUVG.png)
+<p align="center"> 
+  <img width="400" src="image/image_K_JVD9YUVG.png">   
+</p>
 
 The SRTN model has the lowest loss, and its loss curve is relatively smooth, indicating a stable training process and stronger generalization ability.  
 
-**Performance of SRTN on different datasets:**
+**Performance of SRTN on different datasets:** 
 
-![](image/image_s3sui6Gtnf.png)
+<p align="center"> 
+  <img width="400" src="image/image_s3sui6Gtnf.png">   
+</p>
 
-On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the model's excellent adaptability and performance on this specific dataset.
+On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the model's excellent adaptability and performance on this specific dataset. 
 
 #### **PSNR ( Peak signal-to-noise ratio )**
 
@@ -325,10 +387,16 @@ On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the mod
 
 ![PSNR formula](https://latex.codecogs.com/svg.latex?PSNR=10%5Ccdot%20log_%7B10%7D%5Cleft%28%5Cfrac%7BMAX_I%5E2%7D%7BMSE%7D%5Cright%29%3D20%5Ccdot%20log_%7B10%7D%5Cleft%28%5Cfrac%7BMAX_I%7D%7B%5Csqrt%7BMSE%7D%7D%5Cright%29)
 
+<p align="center">  
+  <img width="400" src="image/image_2bm5Vbefr9.png">     
+</p>
+
 #### \*\*SSIM ( Structure Similarity Index Measure ) \*\*
 
 ![SSIM formula](https://latex.codecogs.com/svg.latex?\sigma_{xy}=\frac{1}{N}\sum_{i=1}^{N}x_iy_i-\mu_x\mu_y)
 
-![](image/image_aWVx757YK3.png)
+<p align="center"> 
+  <img width="400" src="image/image_aWVx757YK3.png">    
+</p> 
 
 Our integrated approach significantly improves the precision and usability of medical imaging, which is pivotal for accurate diagnosis and treatment planning.
