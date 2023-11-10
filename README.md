@@ -200,7 +200,7 @@ To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3
 The dataset is divided into four categories according to magnifications 40x, 100x, 200x, and 400x. Each magnification level contains four types of benign breast tumors and four types of malignant breast tumors based on histopathology.&#x20; 
 
 <p align="center"> 
-  <img width="400" src="image/image_Rwj2-16jr3.png">   
+  <img width="400" src="image/image_Rwj2-16jr3.png">    
 </p>
 
 Within such classification, further divisions are made according to medical records. We conduct six processing steps on this dataset, and the core innovative points are reflected in the use of template matching and copy-paste algorithm. Therefore, I will first introduce the detailed processing procedures of these two steps. 
@@ -216,7 +216,7 @@ Innovation point one in data processing: Instead of 'downsampling' which is comm
 Convert the image into grayscale to facilitate subsequent calculations. 
 
 <p align="center"> 
-  <img width="300" src="image/PrHdxStIQx.png">    
+  <img width="300" src="image/image_PrHdxStIQx.png">     
 </p>
 
 All color images in the two datasets are converted to grayscale, where the grayscale value of each pixel is between 0-255. 
