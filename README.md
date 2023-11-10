@@ -1,39 +1,5 @@
 # G4-SRTN Development Documentation
 
-## Contents 
-
--   [Team Information](#Team-Information)
--   [Code File Tree](#Code-File-Tree)
--   [Data Acquisition and Processing](#Data-Acquisition-and-Processing)
-    -   [Dataset 1: TCGA-KIRC
-        ](#Dataset-1-TCGA-KIRC)
-        -   [Collection](#Collection)
-    -   [Dataset 1 Processing](#Dataset-1-Processing)
-        -   [Processing](#Processing)
-        -   [Step 1: Image Segmentation](#Step-1-Image-Segmentation)
-        -   [Step 2: Image Selection](#Step-2-Image-Selection) 
-        -   [Step 3: Image Downsampling
-            ](#Step-3-Image-Downsampling)
-        -   [Step 5: Dataset Splitting——7108 images(HR\&LR)](#Step-5-Dataset-Splitting7108-imagesHRLR) 
-    -   [Dataset 2: BreakHis ](#Dataset-2-BreakHis-)
-        -   [Collection](#Collection)
-        -   [Detailed introduction](#Detailed-introduction)
-        -   [Template matching](#Template-matching)
-        -   [Copy-paste algorithm](#Copy-paste-algorithm)
--   [SRTN Model](#SRTN-Model)
-    -   [ScResTransNet](#ScResTransNet)
-    -   [Residual Body
-        ](#Residual-Body)
--   [Implementation of the Model
-    ](#Implementation-of-the-Model)
-    -   [Mainframe of the SRTN Model](#Mainframe-of-the-SRTN-Model)
-    -   [The two main modules](#The-two-main-modules)
-    -   [Training and Validation](#Training-and-Validation)
--   [Model Comparison
-    ](#Model-Comparison)
-    -   [PSNR ( Peak signal-to-noise ratio )](#PSNR--Peak-signal-to-noise-ratio-)
-    -   [SSIM ( Structure Similarity Index Measure ) ](#SSIM--Structure-Similarity-Index-Measure--)
-
 ## Team Information
 
 **Team: Deep Thinkers-G4**
@@ -86,7 +52,42 @@
     -   train\_SRTN.py
 -   **Train\_result\_pth**
 
-## Data Acquisition and Processing
+## Contents 
+
+-   [Team Information](#Team-Information)
+-   [Code File Tree](#Code-File-Tree)
+-   [Data Acquisition and Processing](#Data-Acquisition-and-Processing)
+    -   [Dataset 1: TCGA-KIRC
+        ](#Dataset-1-TCGA-KIRC)
+        -   [Collection](#Collection)
+    -   [Dataset 1 Processing](#Dataset-1-Processing)
+        -   [Processing](#Processing)
+        -   [Step 1: Image Segmentation](#Step-1-Image-Segmentation)
+        -   [Step 2: Image Selection](#Step-2-Image-Selection) 
+        -   [Step 3: Image Downsampling
+            ](#Step-3-Image-Downsampling)
+        -   [Step 5: Dataset Splitting——7108 images(HR\&LR)](#Step-5-Dataset-Splitting7108-imagesHRLR) 
+    -   [Dataset 2: BreakHis ](#Dataset-2-BreakHis-)
+        -   [Collection](#Collection)
+        -   [Detailed introduction](#Detailed-introduction) 
+        -   [Template matching](#Template-matching)
+        -   [Copy-paste algorithm](#Copy-paste-algorithm)
+-   [SRTN Model](#SRTN-Model)
+    -   [ScResTransNet](#ScResTransNet)
+    -   [Residual Body
+        ](#Residual-Body)
+-   [Implementation of the Model
+    ](#Implementation-of-the-Model)
+    -   [Mainframe of the SRTN Model](#Mainframe-of-the-SRTN-Model)
+    -   [The two main modules](#The-two-main-modules)
+    -   [Training and Validation](#Training-and-Validation)
+-   [Model Comparison
+    ](#Model-Comparison)
+    -   [PSNR ( Peak signal-to-noise ratio )](#PSNR--Peak-signal-to-noise-ratio-)
+    -   [SSIM ( Structure Similarity Index Measure ) ](#SSIM--Structure-Similarity-Index-Measure--)
+
+
+## Data Acquisition and Processing 
 
 ### Dataset 1: TCGA-KIRC&#xD;
 
