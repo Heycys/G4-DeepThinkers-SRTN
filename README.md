@@ -1,6 +1,6 @@
 # G4-SRTN Development Documentation
 
-## 目录
+## Contents 
 
 -   [Team Information](#Team-Information)
 -   [Code File Tree](#Code-File-Tree)
@@ -321,21 +321,15 @@ On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the mod
 
 #### **PSNR ( Peak signal-to-noise ratio )**
 
-$$
-M S E=\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2}
-$$
+![MSE formula](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2)
 
-$$
-P S N R=10 \cdot \log _{10}\left(\frac{M A X_{I}^{2}}{M S E}\right)=20 \cdot \log _{10}\left(\frac{M A X_{I}}{\sqrt{M S E}}\right)
-$$
+![PSNR formula](https://latex.codecogs.com/svg.latex?PSNR=10\cdotlog_{10}\left(\frac{MAX_{I}^{2}}{MSE}\right)=20\cdotlog_{10}\left(\frac{MAX_{I}}{\sqrt{MSE}}\right))
 
 ![](image/image_2bm5Vbefr9.png)
 
 #### \*\*SSIM ( Structure Similarity Index Measure ) \*\*
 
-$$
-\sigma_{x y}=\frac{1}{N} \sum_{i}^{N} x_{i} y_{i}-\mu_{x} \mu_{y}
-$$
+![SSIM formula](https://latex.codecogs.com/svg.latex?\sigma_{xy}=\frac{1}{N}\sum_{i=1}^{N}x_iy_i-\mu_x\mu_y)
 
 ![](image/image_aWVx757YK3.png)
 
