@@ -294,7 +294,7 @@ Efficient Transformer and Simple ResidualBlock . Efficient Transformer module is
 Simple ResBlock module is used to implement residual connections in the model. It consists of two convolutional layers and a ReLU activation function. In our implementation, we have replaced the convolutional layers in ResBlock with the previously mentioned SCconv. By using it, we reduce the extraction of redundant features in the convolutional layers, thereby reducing computational and storage costs.&#x20;
 
 ![](image/image_icHi9Gsc_o.png)
-🔄  ❓
+
 #### Training and Validation
 
 We defined the mean square error (MSE) loss function. We also used the Adamoptimizer with a learning rate of 0.001
