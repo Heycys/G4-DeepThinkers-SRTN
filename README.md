@@ -323,9 +323,7 @@ On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the mod
 
 ![MSE formula](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2)
 
-![PSNR formula](https://latex.codecogs.com/svg.latex?PSNR=10\cdotlog_{10}\left(\frac{MAX_{I}^{2}}{MSE}\right)=20\cdotlog_{10}\left(\frac{MAX_{I}}{\sqrt{MSE}}\right))
-
-![](image/image_2bm5Vbefr9.png)
+![PSNR formula](https://latex.codecogs.com/svg.latex?PSNR=10%5Ccdot%20log_%7B10%7D%5Cleft%28%5Cfrac%7BMAX_I%5E2%7D%7BMSE%7D%5Cright%29%3D20%5Ccdot%20log_%7B10%7D%5Cleft%28%5Cfrac%7BMAX_I%7D%7B%5Csqrt%7BMSE%7D%7D%5Cright%29)
 
 #### \*\*SSIM ( Structure Similarity Index Measure ) \*\*
 
