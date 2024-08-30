@@ -54,8 +54,8 @@
 
 ## Contents 
 
--   [Team Information](#Team-Information)
--   [Code File Tree](#Code-File-Tree)
+-   [Team Information 团队信息](#Team-Information)
+-   [Code File Tree 代码文件树](#Code-File-Tree)
 -   [Data Acquisition and Processing](#Data-Acquisition-and-Processing)
     -   [Dataset 1: TCGA-KIRC
         ](#Dataset-1-TCGA-KIRC)
