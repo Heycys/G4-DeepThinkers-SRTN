@@ -65,13 +65,14 @@
         -   [Step 2: Image Selection 步骤2：图像选择](#Step-2-Image-Selection-步骤2：图像选择) 
         -   [Step 3: Image Downsampling 步骤3：图像降采样
             ](#Step-3-Image-Downsampling-步骤3：图像降采样)
-        -   [Step 4: Dataset Splitting——7108 images(HR\&LR) 步骤4：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-4-Dataset-Splitting7108-imagesHRLR-步骤4：数据集划分——7108张图像（高分辨率&低分辨率）) 
+        -   [Step 4: Secondary Selection 步骤4：二次筛选](#Step-4-Secondary-Selection-步骤4：二次筛选)
+        -   [Step 5: Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5：数据集划分——7108张图像（高分辨率&低分辨率）) 
     -   [Dataset 2: BreakHis 数据集2：BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
         -   [Collection 收集来源](#Collection-收集来源)
-        -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍) 
+        -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍)
         -   [Template matching 模板匹配](#Template-matching-模板匹配)
         -   [Copy-paste algorithm 复制粘贴算法](#Copy-paste-algorithm-复制粘贴算法)
--   [SRTN Model SRTN 模型](#SRTN-Model-SRTN 模型)
+-   [SRTN Model SRTN模型](#SRTN-Model-SRTN模型)
     -   [ScResTransNet](#ScResTransNet)
     -   [Residual Body 残差体](#Residual-Body-残差体)
 -   [Implementation of the Model 模型实现](#Implementation-of-the-Model-模型实现)
@@ -132,15 +133,15 @@ For the large-scale dataset, thatis what we called Dataset 1, we have 7108 image
   <img width="500" src="image/image_gTWpWFbzzM.png"> 
 </p>
 
-### Dataset 1 Processing
+### Dataset 1 Processing 数据集1处理
 
-#### Processing
+#### Processing 数据集1处理
 
 <p align="center"> 
   <img width="200" src="image/image_cI4D5_uASZ.png">   
 </p>
 
-#### Step 1: Image Segmentation
+#### Step 1: Image Segmentation 步骤1：图像分割
 
 Split large SVS files into 256×256 small PNG files.
 
@@ -150,7 +151,7 @@ Split large SVS files into 256×256 small PNG files.
 
 We segmented each SVS image into multiple image blocks with a size of 256x256 pixels, converting them into PNG files, and save them in the HR (high resolution) folder.&#x20;
 
-#### Step 2: Image Selection
+#### Step 2: Image Selection 步骤2：图像选择
 
 Filter images by grayscale standard deviation (≥30).
 
@@ -160,7 +161,7 @@ Filter images by grayscale standard deviation (≥30).
 
 We assess image quality based on the standard deviation of grayscale values, retaining regions with substantial grayscale variations. We calculate the SD for each pixel, comparing it against a threshold (set at 30). From each original medical pathology image, we select the first 100 images exceeding this threshold, saving them as the HR (high resolution) dataset. 
 
-#### Step 3: Image Downsampling&#xD;
+#### Step 3: Image Downsampling 步骤3：图像降采样
 
 Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
@@ -170,7 +171,7 @@ Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
 We downsampled HR images, reducing their resolution to 64×64, and saved the processed images as the LR (low resolution) dataset.
 
-**Step 4: Secondary Selection**
+#### Step 4: Secondary Selection 步骤4：二次筛选
 
 Remove images with over 40% of pixels close to all black or all white
 
@@ -180,7 +181,7 @@ Remove images with over 40% of pixels close to all black or all white
 
 We performed a second round of selection on images in the HR and LR datasets, removing those with over 40% of pixels close to all black or all white.&#x20;
 
-#### Step 5: Dataset Splitting——7108 images(HR\&LR)
+#### Step 5: Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）
 
 Train: 5686, Test: 712 , Val: 710
 
@@ -188,9 +189,9 @@ We divided the dataset into three sets in a ratio of 8:1:1 as I mentioned before
 
 And for **the Dataset Mini**, the five steps are in the same.&#x20; 
 
-### Dataset 2: BreakHis&#x20;
+### Dataset 2: BreakHis 数据集2：BreakHis
 
-#### Collection
+#### Collection 收集来源
 
 The Breast Cancer Histopathological Image Classification is derived from Breast Cancer Histopathological Database (BreakHis).&#x20;
 
@@ -198,7 +199,7 @@ The Breast Cancer Histopathological Image Classification is derived from Breast 
   <img width="500" src="image/image_mTjo4y_SX_.png">  
 </p>
 
-#### Detailed introduction
+#### Detailed introduction 详细介绍 
 
 The dataset is composed of 9,109 microscopic images of breast tumor tissue collected from 82 patients using different magnifying factors (40X, 100X, 200X, and 400X).&#x20;
 
@@ -216,7 +217,7 @@ The dataset is divided into four categories according to magnifications 40x, 100
 
 Within such classification, further divisions are made according to medical records. We conduct six processing steps on this dataset, and the core innovative points are reflected in the use of template matching and copy-paste algorithm. Therefore, I will first introduce the detailed processing procedures of these two steps. 
 
-#### Template matching
+#### Template matching 模板匹配
 
 We replace the standard "downsampling" method for acquiring LR with the use of lower magnification images as our LR dataset. The problem is how to find that area.&#x20;
 
@@ -262,7 +263,7 @@ finding positions where the matching degree is greater than or equal to this val
 
 The positions with a matching degree greater than or equal to this value are then found and extracted. Repeating this process enables batch template matching, and we found the 100x images corresponding to the 400x template. 
 
-#### Copy-paste algorithm
+#### Copy-paste algorithm 复制粘贴算法
 
 We employ the copy-paste algorithm to augment our dataset, as it allows for precisely extracting and repositioning regions of interest within and across images.
 
@@ -280,7 +281,7 @@ Insummary, the processing procedures for this dataset include six steps:&#x20;
   <img width="400" src="image/image_EmkGEQOWMp.png">   
 </p>
 
-## SRTN Model
+## SRTN Model SRTN模型
 
 ### ScResTransNet
 
@@ -292,7 +293,7 @@ OurSRTN model, building upon the foundation of EDSR, introduces enhancedefficien
 
 The Efficient Transformer module is a cornerstone of our design, utilizing an Efficient Multi-Head Attention mechanism, known as EMA, alongside a Multilayer Perceptron (MLP) network. For the up sampling process, we have integrated sub-pixel convolution layers, ensuring a meticulous upscaling of image resolution while preserving intricate details. This architecture culminates in a refined balance of performance and efficiency.
 
-### Residual Body&#xD;
+### Residual Body 残差体
 
 The Residual Body, based on the design from Residual Network, makes the training process more efficient.
 
@@ -334,7 +335,7 @@ It rearranges the low-resolution input into high-resolution output to increase t
 
 Implementation of the Model
 
-#### Mainframe of the SRTN Model
+#### Mainframe of the SRTN Model SRTN模型主框架
 
 <p align="center"> 
   <img width="500" src="image/image_zO-5dkkwX3.png">   
@@ -346,7 +347,7 @@ This code defines a model named SRTN ,as shown in the image. It consists of head
   <img width="350" src="image/image_7QZIihGon2.png">     
 </p>
 
-#### **The two main modules**
+#### **The two main modules** 两个主要模块
 
 Efficient Transformer and Simple ResidualBlock . Efficient Transformer module is used for feature transformation and extraction, offering efficient performance. It comprises three main parts: input embeddings convolution, transformer block, and output embeddings convolution. This module effectively handles features to enhance the model's performance and representation capabilities.
 
@@ -360,7 +361,7 @@ Simple ResBlock module is used to implement residual connections in the model. I
   <img width="400" src="image/image_icHi9Gsc_o.png">   
 </p>
 
-#### Training and Validation
+#### Training and Validation 训练和验证
 
 We defined the mean square error (MSE) loss function. We also used the Adamoptimizer with a learning rate of 0.001
 
@@ -374,7 +375,7 @@ We evaluate the model on test data. We make predictions, calculate test loss, an
   <img width="300" src="image/image_xuFirXrxxE.png">   
 </p>
 
-Model Comparison
+### Model Comparison 模型比较
 
 **Training error curves of different models:**
 
@@ -392,7 +393,7 @@ The SRTN model has the lowest loss, and its loss curve is relatively smooth, ind
 
 On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the model's excellent adaptability and performance on this specific dataset. 
 
-#### **PSNR ( Peak signal-to-noise ratio )**
+#### **PSNR ( Peak signal-to-noise ratio )** PSNR（峰值信噪比）
 
 ![MSE formula](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2)
 
@@ -402,7 +403,7 @@ On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the mod
   <img width="400" src="image/image_2bm5Vbefr9.png">     
 </p>
 
-#### \*\*SSIM ( Structure Similarity Index Measure ) \*\*
+#### \*\*SSIM ( Structure Similarity Index Measure ) \*\* SSIM（结构相似性指数测量）
 
 ![SSIM formula](https://latex.codecogs.com/svg.latex?\sigma_{xy}=\frac{1}{N}\sum_{i=1}^{N}x_iy_i-\mu_x\mu_y)
 
