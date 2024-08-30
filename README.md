@@ -1,6 +1,6 @@
 # G4-SRTN Development Documentation
 
-## Team Information
+## Team Information 团队信息
 
 **Team: Deep Thinkers-G4**
 
@@ -54,7 +54,7 @@
 
 ## Contents 
 
--   [Team Information 团队信息](#Team-Information)
+-   [Team Information 团队信息](#Team-Information-团队信息)
 -   [Code File Tree 代码文件树](#Code-File-Tree)
 -   [Data Acquisition and Processing](#Data-Acquisition-and-Processing)
     -   [Dataset 1: TCGA-KIRC
