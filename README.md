@@ -61,13 +61,12 @@
         -   [Collection 收集来源](#Collection-收集来源)
     -   [Dataset 1 Processing 数据集1处理](#Dataset-1-Processing-数据集1处理)
         -   [Processing 处理步骤](#Processing-处理步骤)
-        -   [Step 1: Image Segmentation 步骤1：图像分割](#Step-1-Image-Segmentation-步骤1：图像分割)
-        -   [Step 2: Image Selection 步骤2：图像选择](#Step-2-Image-Selection-步骤2：图像选择) 
-        -   [Step 3: Image Downsampling 步骤3：图像降采样
-            ](#Step-3-Image-Downsampling-步骤3：图像降采样)
-        -   [Step 4: Secondary Selection 步骤4：二次筛选](#Step-4-Secondary-Selection-步骤4：二次筛选)
-        -   [Step 5: Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5：数据集划分——7108张图像（高分辨率&低分辨率）) 
-    -   [Dataset 2: BreakHis 数据集2：BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
+        -   [Step 1 Image Segmentation 步骤1：图像分割](#Step-1-Image-Segmentation-步骤1：图像分割)
+        -   [Step 2 Image Selection 步骤2：图像选择](#Step-2-Image-Selection-步骤2：图像选择) 
+        -   [Step 3 Image Downsampling 步骤3：图像降采样](#Step-3-Image-Downsampling-步骤3：图像降采样)
+        -   [Step 4 Secondary Selection 步骤4：二次筛选](#Step-4-Secondary-Selection-步骤4：二次筛选)
+        -   [Step 5 Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5：数据集划分——7108张图像（高分辨率&低分辨率）) 
+    -   [Dataset 2 BreakHis 数据集2：BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
         -   [Collection 收集来源](#Collection-收集来源)
         -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍)
         -   [Template matching 模板匹配](#Template-matching-模板匹配)
@@ -135,13 +134,13 @@ For the large-scale dataset, thatis what we called Dataset 1, we have 7108 image
 
 ### Dataset 1 Processing 数据集1处理
 
-#### Processing 数据集1处理
+#### Processing 处理步骤
 
 <p align="center"> 
   <img width="200" src="image/image_cI4D5_uASZ.png">   
 </p>
 
-#### Step 1: Image Segmentation 步骤1：图像分割
+#### Step 1 Image Segmentation 步骤1：图像分割
 
 Split large SVS files into 256×256 small PNG files.
 
@@ -151,7 +150,7 @@ Split large SVS files into 256×256 small PNG files.
 
 We segmented each SVS image into multiple image blocks with a size of 256x256 pixels, converting them into PNG files, and save them in the HR (high resolution) folder.&#x20;
 
-#### Step 2: Image Selection 步骤2：图像选择
+#### Step 2 Image Selection 步骤2：图像选择
 
 Filter images by grayscale standard deviation (≥30).
 
@@ -161,7 +160,7 @@ Filter images by grayscale standard deviation (≥30).
 
 We assess image quality based on the standard deviation of grayscale values, retaining regions with substantial grayscale variations. We calculate the SD for each pixel, comparing it against a threshold (set at 30). From each original medical pathology image, we select the first 100 images exceeding this threshold, saving them as the HR (high resolution) dataset. 
 
-#### Step 3: Image Downsampling 步骤3：图像降采样
+#### Step 3 Image Downsampling 步骤3：图像降采样
 
 Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
@@ -171,7 +170,7 @@ Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
 We downsampled HR images, reducing their resolution to 64×64, and saved the processed images as the LR (low resolution) dataset.
 
-#### Step 4: Secondary Selection 步骤4：二次筛选
+#### Step 4 Secondary Selection 步骤4：二次筛选
 
 Remove images with over 40% of pixels close to all black or all white
 
@@ -181,7 +180,7 @@ Remove images with over 40% of pixels close to all black or all white
 
 We performed a second round of selection on images in the HR and LR datasets, removing those with over 40% of pixels close to all black or all white.&#x20;
 
-#### Step 5: Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）
+#### Step 5 Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）
 
 Train: 5686, Test: 712 , Val: 710
 
@@ -189,7 +188,7 @@ We divided the dataset into three sets in a ratio of 8:1:1 as I mentioned before
 
 And for **the Dataset Mini**, the five steps are in the same.&#x20; 
 
-### Dataset 2: BreakHis 数据集2：BreakHis
+### Dataset 2 BreakHis 数据集2：BreakHis
 
 #### Collection 收集来源
 
@@ -333,7 +332,7 @@ We use the sub-pixel convolution layer to upscale the image resolution. This lay
 
 It rearranges the low-resolution input into high-resolution output to increase the pixel density of the image.
 
-Implementation of the Model
+### Implementation of the Model 模型实现
 
 #### Mainframe of the SRTN Model SRTN模型主框架
 
@@ -393,7 +392,7 @@ The SRTN model has the lowest loss, and its loss curve is relatively smooth, ind
 
 On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the model's excellent adaptability and performance on this specific dataset. 
 
-#### **PSNR ( Peak signal-to-noise ratio )** PSNR（峰值信噪比）
+#### PSNR ( Peak signal-to-noise ratio ) PSNR（峰值信噪比）
 
 ![MSE formula](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2)
 
@@ -403,7 +402,7 @@ On the complex BreakHis dataset, SRTN has the lowest loss, demonstrating the mod
   <img width="400" src="image/image_2bm5Vbefr9.png">     
 </p>
 
-#### \*\*SSIM ( Structure Similarity Index Measure ) \*\* SSIM（结构相似性指数测量）
+#### SSIM ( Structure Similarity Index Measure ) SSIM（结构相似性指数测量）
 
 ![SSIM formula](https://latex.codecogs.com/svg.latex?\sigma_{xy}=\frac{1}{N}\sum_{i=1}^{N}x_iy_i-\mu_x\mu_y)
 
