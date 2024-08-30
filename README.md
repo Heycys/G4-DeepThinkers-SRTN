@@ -6,17 +6,17 @@
 
 **Team Members and Contributions (in the order of final pre)**
 
--   **LIU Qifan (**[**fanfan\_lqf@163.com**](mailto:fanfan_lqf@163.com "fanfan_lqf@163.com")\*\*): \*\*
+-   **LIU Qifan (**[**fanfan\_lqf@163.com**](mailto:fanfan_lqf@163.com "fanfan_lqf@163.com")): 
     -   Kept track of project progress, read literature, and wrote the introduction and background sections of the paper.&#x20;
--   **YING Yiyuan (**[**yiyuanying@outlook.com**](mailto:yiyuanying@outlook.com "yiyuanying@outlook.com")\*\*): \*\*
+-   **YING Yiyuan (**[**yiyuanying@outlook.com**](mailto:yiyuanying@outlook.com "yiyuanying@outlook.com")): 
     -   Downloaded and organized Dataset 1 (TCGA-KIRC), wrote the data processing section of the paper.
--   **FAN Hongyue (**[**21011171@mail.ecust.edu.cn**](mailto:21011171@mail.ecust.edu.cn "21011171@mail.ecust.edu.cn")\*\*): \*\*
+-   **FAN Hongyue (**[**21011171@mail.ecust.edu.cn**](mailto:21011171@mail.ecust.edu.cn "21011171@mail.ecust.edu.cn")): 
     -   Processed Dataset 2 (BreastHis), proposed innovative methods for data handling.&#x20;
--   **CHEN Yishen (**[**ohhcys@gmail.com**](mailto:ohhcys@gmail.com "ohhcys@gmail.com")\*\*): \*\*
+-   **CHEN Yishen (**[**ohhcys@gmail.com**](mailto:ohhcys@gmail.com "ohhcys@gmail.com")): 
     -   Team leader, responsible for guiding the direction of the project, proposed innovative methods for the model, and implemented the model's code.
--   **ZHANG Zehong (**[**21013074@mail.ecust.edu.cn**](mailto:21013074@mail.ecust.edu.cn "21013074@mail.ecust.edu.cn")\*\*): \*\*
+-   **ZHANG Zehong (**[**21013074@mail.ecust.edu.cn**](mailto:21013074@mail.ecust.edu.cn "21013074@mail.ecust.edu.cn")): 
     -   Trained the model, fine-tuned parameters, and participated in the innovation process of the model.
--   **CHEN Ying (**[**21013172@mail.ecust.edu.cn**](mailto:21013172@mail.ecust.edu.cn "21013172@mail.ecust.edu.cn")\*\*): \*\*
+-   **CHEN Ying (**[**21013172@mail.ecust.edu.cn**](mailto:21013172@mail.ecust.edu.cn "21013172@mail.ecust.edu.cn")): 
     -   Organized the output information of the model, wrote the model comparison and results sections of the paper, and created the PowerPoint presentation.
 
 ## Code File Tree
@@ -87,36 +87,50 @@
     -   [SSIM ( Structure Similarity Index Measure ) ](#SSIM--Structure-Similarity-Index-Measure--)
 
 
-## Data Acquisition and Processing 
+## Data Acquisition and Processing 数据采集和处理
 
-### Dataset 1: TCGA-KIRC&#xD;
+### Dataset 1: TCGA-KIRC&#xD; 数据集 1: TCGA-KIRC
 
-#### Collection
+#### Collection 收集来源:
 
 <p align="center">
   <img width="500" src="image/image_Znhnwu_zog.png"> 
 </p>
 
 -   The Cancer Genome Atlas Kidney Renal Clear Cell Carcinoma(TCGA-KIRC), National Cancer Institute GDC Data Portal.
+-   癌症基因组图谱肾透明细胞癌（TCGA-KIRC），来自国家癌症研究所GDC数据门户。
 -   Including clinical images, genomic, pathological, and clinical data of patients with clear cell renal carcinoma.
+-   包括患有透明细胞肾癌患者的临床影像、基因组、病理学和临床数据。
 -   200 slice images in SVS formatin the website order.
+-   网站上有200张SVS格式的切片图像。
 
-In the selection of our firstdataset, we choose the TCGA-KIRC dataset from the National Cancer Institute GDCData Portal. This research project gathers clinical images, genomic,pathological, and clinical data of patients with clear cell renal carcinoma. Wechoose the original tissue pathology slide images from this dataset andconducted super-resolution training and testing on these image data. 
+In the selection of our firstdataset, we choose the TCGA-KIRC dataset from the National Cancer Institute GDCData Portal. This research project gathers clinical images, genomic,pathological, and clinical data of patients with clear cell renal carcinoma. Wechoose the original tissue pathology slide images from this dataset andconducted super-resolution training and testing on these image data. 
 
-**Dataset 1——7108 images(HR\&LR)** 
+在选择我们的第一个数据集时，我们选择了来自国家癌症研究所GDC数据门户的TCGA-KIRC数据集。这个研究项目收集了透明细胞肾癌患者的临床影像、基因组、病理和临床数据。我们选择了该数据集中的原始组织病理切片图像，并对这些图像数据进行了超分辨率训练和测试。
+
+**Dataset 1——7108 images(HR\&LR)** 数据集 1——7108 张图像（高分辨率 & 低分辨率）
 
 -   Segmented from 200 SVSimages.&#x20;
--   Train Set: 5686, Validation Set: 710, Test Set: 712. 
+-   从200张SVS图像中分割而来。
+-   Train Set: 5686, Validation Set: 710, Test Set: 712.
+-   训练集：5686，验证集：710，测试集：712。
 
 For this dataset 1, we establishtwo kinds of dataset. We have made a small-scale dataset for the initialtraining and debugging phases of the model, facilitating more efficientevaluation of model performance and parameter optimization. Additionally, itserves as a solution to address the issue of insufficient computer performance. 
 
-**Dataset Mini——4020 images(HR\&LR)**
+对于这个数据集1，我们建立了两种类型的数据集。我们制作了一个小规模数据集用于模型的初始训练和调试阶段，以便更有效地评估模型性能和优化参数。此外，它还解决了计算性能不足的问题。
+
+**Dataset Mini——4020 images(HR\&LR)** 数据集 Mini——4020 张图像（高分辨率 & 低分辨率）
 
 -   To solve the problem of insufficientcomputer performance.
+-   为解决计算性能不足的问题。
 -   Segmented from a singleSVS image.
+-   从单张SVS图像中分割而来。
 -   Train Set: 3216, Validation Set: 402, Test Set: 402.
+-   训练集：3216，验证集：402，测试集：402。
 
 For the large-scale dataset, thatis what we called Dataset 1, we have 7108 images from 200 SVS images, dividingthem into training set, validation set and test set in a 8:1:1(eight one one) ratio. Boththe HR and LR datasets share these same numbers. And for the small dataset,that is what we called Dataset Mini, we have 4020 images from a single SVSimage, and the ratio of each part is in the same.
+
+对于大规模数据集，即我们所说的数据集1，我们从200张SVS图像中得到了7108张图像，将它们分为训练集、验证集和测试集，比例为8:1:1。高分辨率和低分辨率的数据集均采用这些相同的数字。至于小规模数据集，即我们所说的数据集Mini，我们从一张SVS图像中得到了4020张图像，每个部分的比例相同。
 
 <p align="center"> 
   <img width="500" src="image/image_gTWpWFbzzM.png"> 
