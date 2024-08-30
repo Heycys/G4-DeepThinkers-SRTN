@@ -19,7 +19,7 @@
 -   **CHEN Ying (**[**21013172@mail.ecust.edu.cn**](mailto:21013172@mail.ecust.edu.cn "21013172@mail.ecust.edu.cn")): 
     -   Organized the output information of the model, wrote the model comparison and results sections of the paper, and created the PowerPoint presentation.
 
-## Code File Tree
+## Code File Tree 代码文件树
 
 -   **Data1\_process**
     -   Step 1 SVS extracts png image blocks.py
@@ -55,43 +55,39 @@
 ## Contents 
 
 -   [Team Information 团队信息](#Team-Information-团队信息)
--   [Code File Tree 代码文件树](#Code-File-Tree)
--   [Data Acquisition and Processing](#Data-Acquisition-and-Processing)
-    -   [Dataset 1: TCGA-KIRC
-        ](#Dataset-1-TCGA-KIRC)
-        -   [Collection](#Collection)
-    -   [Dataset 1 Processing](#Dataset-1-Processing)
-        -   [Processing](#Processing)
-        -   [Step 1: Image Segmentation](#Step-1-Image-Segmentation)
-        -   [Step 2: Image Selection](#Step-2-Image-Selection) 
-        -   [Step 3: Image Downsampling
-            ](#Step-3-Image-Downsampling)
-        -   [Step 5: Dataset Splitting——7108 images(HR\&LR)](#Step-5-Dataset-Splitting7108-imagesHRLR) 
-    -   [Dataset 2: BreakHis ](#Dataset-2-BreakHis-)
-        -   [Collection](#Collection)
-        -   [Detailed introduction](#Detailed-introduction) 
-        -   [Template matching](#Template-matching)
-        -   [Copy-paste algorithm](#Copy-paste-algorithm)
--   [SRTN Model](#SRTN-Model)
+-   [Code File Tree 代码文件树](#Code-File-Tree-代码文件树)
+-   [Data Acquisition and Processing 数据获取和处理](#Data-Acquisition-and-Processing-数据获取和处理)
+    -   [Dataset 1: TCGA-KIRC 数据集1: TCGA-KIRC](#Dataset-1-TCGA-KIRC-数据集1:-TCGA-KIRC)
+        -   [Collection 收集来源](#Collection-收集来源)
+    -   [Dataset 1 Processing 数据集1处理](#Dataset-1-Processing-数据集1处理)
+        -   [Processing 处理步骤](#Processing-处理步骤)
+        -   [Step 1: Image Segmentation 步骤1：图像分割](#Step-1-Image-Segmentation-步骤1：图像分割)
+        -   [Step 2: Image Selection 步骤2：图像选择](#Step-2-Image-Selection-步骤2：图像选择) 
+        -   [Step 3: Image Downsampling 步骤3：图像降采样
+            ](#Step-3-Image-Downsampling-步骤3：图像降采样)
+        -   [Step 4: Dataset Splitting——7108 images(HR\&LR) 步骤4：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-4-Dataset-Splitting7108-imagesHRLR-步骤4：数据集划分——7108张图像（高分辨率&低分辨率）) 
+    -   [Dataset 2: BreakHis 数据集2：BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
+        -   [Collection 收集来源](#Collection-收集来源)
+        -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍) 
+        -   [Template matching 模板匹配](#Template-matching-模板匹配)
+        -   [Copy-paste algorithm 复制粘贴算法](#Copy-paste-algorithm-复制粘贴算法)
+-   [SRTN Model SRTN 模型](#SRTN-Model-SRTN 模型)
     -   [ScResTransNet](#ScResTransNet)
-    -   [Residual Body
-        ](#Residual-Body)
--   [Implementation of the Model
-    ](#Implementation-of-the-Model)
-    -   [Mainframe of the SRTN Model](#Mainframe-of-the-SRTN-Model)
-    -   [The two main modules](#The-two-main-modules)
-    -   [Training and Validation](#Training-and-Validation)
--   [Model Comparison
-    ](#Model-Comparison)
-    -   [PSNR ( Peak signal-to-noise ratio )](#PSNR--Peak-signal-to-noise-ratio-)
-    -   [SSIM ( Structure Similarity Index Measure ) ](#SSIM--Structure-Similarity-Index-Measure--)
+    -   [Residual Body 残差体](#Residual-Body-残差体)
+-   [Implementation of the Model 模型实现](#Implementation-of-the-Model-模型实现)
+    -   [Mainframe of the SRTN Model SRTN模型主框架](#Mainframe-of-the-SRTN-Model-SRTN模型主框架)
+    -   [The two main modules 两个主要模块](#The-two-main-modules-两个主要模块)
+    -   [Training and Validation 训练和验证](#Training-and-Validation-训练和验证)
+-   [Model Comparison 模型比较](#Model-Comparison-模型比较)
+    -   [PSNR ( Peak signal-to-noise ratio ) PSNR（峰值信噪比）](#PSNR--Peak-signal-to-noise-ratio-PSNR（峰值信噪比）)
+    -   [SSIM ( Structure Similarity Index Measure ) SSIM（结构相似性指数测量）](#SSIM--Structure-Similarity-Index-Measure--SSIM（结构相似性指数测量）)
 
 
-## Data Acquisition and Processing 数据采集和处理
+## Data Acquisition and Processing 数据获取和处理
 
-### Dataset 1: TCGA-KIRC&#xD; 数据集 1: TCGA-KIRC
+### Dataset 1: TCGA-KIRC 数据集1: TCGA-KIRC
 
-#### Collection 收集来源:
+#### Collection 收集来源
 
 <p align="center">
   <img width="500" src="image/image_Znhnwu_zog.png"> 
