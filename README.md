@@ -66,7 +66,7 @@
         -   [Step 3 Image Downsampling 步骤3 图像降采样](#Step-3-Image-Downsampling-步骤3-图像降采样)
         -   [Step 4 Secondary Selection 步骤4 二次筛选](#Step-4-Secondary-Selection-步骤4-二次筛选)
         -   [Step 5 Dataset Splitting 7108 images(HR\&LR) 步骤5 数据集划分 7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5-数据集划分-7108张图像（高分辨率&低分辨率）) 
-    -   [Dataset 2 BreakHis 数据集2 BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
+    -   [Dataset 2 BreakHis 数据集2 BreakHis](#Dataset-2-BreakHis-数据集2-BreakHis)
         -   [Collection 收集来源](#Collection-收集来源)
         -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍)
         -   [Template matching 模板匹配](#Template-matching-模板匹配)
