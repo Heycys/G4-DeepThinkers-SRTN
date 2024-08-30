@@ -57,16 +57,16 @@
 -   [Team Information 团队信息](#Team-Information-团队信息)
 -   [Code File Tree 代码文件树](#Code-File-Tree-代码文件树)
 -   [Data Acquisition and Processing 数据获取和处理](#Data-Acquisition-and-Processing-数据获取和处理)
-    -   [Dataset 1: TCGA-KIRC 数据集1: TCGA-KIRC](#Dataset-1-TCGA-KIRC-数据集1:-TCGA-KIRC)
+    -   [Dataset 1 TCGA-KIRC 数据集1 TCGA-KIRC](#Dataset-1-TCGA-KIRC-数据集1-TCGA-KIRC)
         -   [Collection 收集来源](#Collection-收集来源)
     -   [Dataset 1 Processing 数据集1处理](#Dataset-1-Processing-数据集1处理)
         -   [Processing 处理步骤](#Processing-处理步骤)
-        -   [Step 1 Image Segmentation 步骤1：图像分割](#Step-1-Image-Segmentation-步骤1：图像分割)
-        -   [Step 2 Image Selection 步骤2：图像选择](#Step-2-Image-Selection-步骤2：图像选择) 
-        -   [Step 3 Image Downsampling 步骤3：图像降采样](#Step-3-Image-Downsampling-步骤3：图像降采样)
-        -   [Step 4 Secondary Selection 步骤4：二次筛选](#Step-4-Secondary-Selection-步骤4：二次筛选)
-        -   [Step 5 Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5：数据集划分——7108张图像（高分辨率&低分辨率）) 
-    -   [Dataset 2 BreakHis 数据集2：BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
+        -   [Step 1 Image Segmentation 步骤1 图像分割](#Step-1-Image-Segmentation-步骤1-图像分割)
+        -   [Step 2 Image Selection 步骤2 图像选择](#Step-2-Image-Selection-步骤2-图像选择) 
+        -   [Step 3 Image Downsampling 步骤3 图像降采样](#Step-3-Image-Downsampling-步骤3-图像降采样)
+        -   [Step 4 Secondary Selection 步骤4 二次筛选](#Step-4-Secondary-Selection-步骤4-二次筛选)
+        -   [Step 5 Dataset Splitting 7108 images(HR\&LR) 步骤5 数据集划分 7108张图像（高分辨率&低分辨率）](#Step-5-Dataset-Splitting7108-imagesHRLR-步骤5-数据集划分-7108张图像（高分辨率&低分辨率）) 
+    -   [Dataset 2 BreakHis 数据集2 BreakHis](#Dataset-2-BreakHis-数据集2：BreakHis)
         -   [Collection 收集来源](#Collection-收集来源)
         -   [Detailed introduction 详细介绍](#Detailed-introduction-详细介绍)
         -   [Template matching 模板匹配](#Template-matching-模板匹配)
@@ -85,7 +85,7 @@
 
 ## Data Acquisition and Processing 数据获取和处理
 
-### Dataset 1: TCGA-KIRC 数据集1: TCGA-KIRC
+### Dataset 1 TCGA-KIRC 数据集1 TCGA-KIRC
 
 #### Collection 收集来源
 
@@ -104,7 +104,7 @@ In the selection of our firstdataset, we choose the TCGA-KIRC dataset from the N
 
 在选择我们的第一个数据集时，我们选择了来自国家癌症研究所GDC数据门户的TCGA-KIRC数据集。这个研究项目收集了透明细胞肾癌患者的临床影像、基因组、病理和临床数据。我们选择了该数据集中的原始组织病理切片图像，并对这些图像数据进行了超分辨率训练和测试。
 
-**Dataset 1——7108 images(HR\&LR)** 数据集 1——7108 张图像（高分辨率 & 低分辨率）
+**Dataset 1——7108 images(HR\&LR)** 数据集 1 7108 张图像（高分辨率 & 低分辨率）
 
 -   Segmented from 200 SVSimages.&#x20;
 -   从200张SVS图像中分割而来。
@@ -140,7 +140,7 @@ For the large-scale dataset, thatis what we called Dataset 1, we have 7108 image
   <img width="200" src="image/image_cI4D5_uASZ.png">   
 </p>
 
-#### Step 1 Image Segmentation 步骤1：图像分割
+#### Step 1 Image Segmentation 步骤1 图像分割
 
 Split large SVS files into 256×256 small PNG files.
 
@@ -150,7 +150,7 @@ Split large SVS files into 256×256 small PNG files.
 
 We segmented each SVS image into multiple image blocks with a size of 256x256 pixels, converting them into PNG files, and save them in the HR (high resolution) folder.&#x20;
 
-#### Step 2 Image Selection 步骤2：图像选择
+#### Step 2 Image Selection 步骤2 图像选择
 
 Filter images by grayscale standard deviation (≥30).
 
@@ -160,7 +160,7 @@ Filter images by grayscale standard deviation (≥30).
 
 We assess image quality based on the standard deviation of grayscale values, retaining regions with substantial grayscale variations. We calculate the SD for each pixel, comparing it against a threshold (set at 30). From each original medical pathology image, we select the first 100 images exceeding this threshold, saving them as the HR (high resolution) dataset. 
 
-#### Step 3 Image Downsampling 步骤3：图像降采样
+#### Step 3 Image Downsampling 步骤3 图像降采样
 
 Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
@@ -170,7 +170,7 @@ Downsample HR images to LR images.(Resolution from 256×256 to 64×64)
 
 We downsampled HR images, reducing their resolution to 64×64, and saved the processed images as the LR (low resolution) dataset.
 
-#### Step 4 Secondary Selection 步骤4：二次筛选
+#### Step 4 Secondary Selection 步骤4 二次筛选
 
 Remove images with over 40% of pixels close to all black or all white
 
@@ -180,7 +180,7 @@ Remove images with over 40% of pixels close to all black or all white
 
 We performed a second round of selection on images in the HR and LR datasets, removing those with over 40% of pixels close to all black or all white.&#x20;
 
-#### Step 5 Dataset Splitting——7108 images(HR\&LR) 步骤5：数据集划分——7108张图像（高分辨率&低分辨率）
+#### Step 5 Dataset Splitting 7108 images(HR\&LR) 步骤5 数据集划分 7108张图像（高分辨率&低分辨率）
 
 Train: 5686, Test: 712 , Val: 710
 
@@ -188,7 +188,7 @@ We divided the dataset into three sets in a ratio of 8:1:1 as I mentioned before
 
 And for **the Dataset Mini**, the five steps are in the same.&#x20; 
 
-### Dataset 2 BreakHis 数据集2：BreakHis
+### Dataset 2 BreakHis 数据集2 BreakHis
 
 #### Collection 收集来源
 
